@@ -1,0 +1,14 @@
+{
+  "name": "word2vec-node-standalone",
+  "version": "0.0.4",
+  "description": "word2vec with the vector data, plus some popular words",
+  "main": "index.js",
+  "dependencies": {
+    "word2vec": "^1.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
