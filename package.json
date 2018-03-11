@@ -1,6 +1,6 @@
 {
   "name": "word2vec-node-standalone",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "word2vec with the vector data, plus some popular words",
   "main": "index.js",
   "dependencies": {
