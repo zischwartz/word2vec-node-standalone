@@ -15,17 +15,37 @@ exports.load_w2v_model = function(cb) {
   })
 }
 
-exports.load_10k_no_swear_words = function() {
-  let file_path = path.resolve(
-    __dirname,
-    "./data/google-10000-english-usa-no-swears.txt"
-  )
+exports.load_5k_words = function() {
+  let file_path = path.resolve(__dirname, "./data/5k.csv")
   let content = fs.readFileSync(file_path, { encoding: "utf-8" })
-  return content.split("\n")
+  // \n?
+  let lines = content.split("\r\n").map(line => line.split(","))
+  // pop off the first line
+  let headers = lines.shift()
+
+  lines = lines.map(line => {
+    let result = {}
+    headers.map((col_name, i) => {
+      result[col_name] = line[i]
+    })
+    return result
+  })
+  // console.log(headers)
+  // headers = headers.split(',')
+  return lines
 }
 
-exports.load_20k_words = function() {
-  let file_path = path.resolve(__dirname, "./data/20k.txt")
-  let content = fs.readFileSync(file_path, { encoding: "utf-8" })
-  return content.split("\n")
-}
+// exports.load_10k_no_swear_words = function() {
+//   let file_path = path.resolve(
+//     __dirname,
+//     "./data/google-10000-english-usa-no-swears.txt"
+//   )
+//   let content = fs.readFileSync(file_path, { encoding: "utf-8" })
+//   return content.split("\n")
+// }
+//
+// exports.load_20k_words = function() {
+//   let file_path = path.resolve(__dirname, "./data/20k.txt")
+//   let content = fs.readFileSync(file_path, { encoding: "utf-8" })
+//   return content.split("\n")
+// }
